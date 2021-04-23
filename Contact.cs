@@ -4,9 +4,9 @@ using System.Text;
 
 namespace PhonebookApp
 {
-    class Contacts
+    class Contact
     {
-        public Contacts(string name, string number)
+        public Contact(string name, string number)
         {
             Name = name;
             Number = number;

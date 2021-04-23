@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace PhonebookApp
+{
+    class Phonebook
+    {
+        private List<contact> _contacts { get; set; }
+        private void DisplayContactDetails(Contact contact)
+        {
+            Console.WriteLine($"Contact: {contact.Name}, {contact.Number}")
+        }
+
+        public void AddContact(Contact contact)
+        {
+            _contacts.Add(contact);
+        }
+
+        public void DisplayContact(string number)
+        {
+            var contact = _contacts.FirstOrDefault(c => c.Number == number);
+            if(contact == null)
+            {
+                Console.WriteLine("Contact Not Found")
+            }
+            else
+            {
+                DisplayContactDetails(contact)
+            }
+        }
+
+        public void DisplayAllContacts()
+        {
+            foreach (var contact in _contacts)
+            {
+                DisplayContactDetails(contact);
+            }
+        }
+    }
+}
