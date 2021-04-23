@@ -1,15 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace PhonebookApp
 {
     class Phonebook
     {
-        private List<contact> _contacts { get; set; }
+        private List<Contact> _contacts { get; set; } = new List<Contact>();
         private void DisplayContactDetails(Contact contact)
         {
-            Console.WriteLine($"Contact: {contact.Name}, {contact.Number}")
+            Console.WriteLine($"Contact: {contact.Name}, {contact.Number}");
+        }
+
+        private void DisplayContactsDetails(List<Contact> contacts)
+        {
+            foreach (var contact in contacts)
+            {
+                DisplayContactDetails(contact);
+            }
         }
 
         public void AddContact(Contact contact)
@@ -22,30 +31,26 @@ namespace PhonebookApp
             var contact = _contacts.FirstOrDefault(c => c.Number == number);
             if(contact == null)
             {
-                Console.WriteLine("Contact Not Found")
+                Console.WriteLine("Contact Not Found");
             }
             else
-            {
-                DisplayContactDetails(contact)
-            }
-        }
-
-        public void DisplayAllContacts()
-        {
-            foreach (var contact in _contacts)
             {
                 DisplayContactDetails(contact);
             }
         }
-    }
 
-    public void DisplayMatchingContacts(string searchPhrase)
-    {
-        var matchingContacts = _contacts.Where(c => c.Name.Contains(searchPhrase)).ToList();
-        foreach (var contact in _contacts)
+        public void DisplayAllContact()
         {
-            DisplayContactDetails(contact);
+            DisplayContactsDetails(_contacts);   
+        }
+
+        public void DisplayMatchingContacts(string searchPhrase)
+        {
+            var matchingContacts = _contacts.Where(c => c.Name.Contains(searchPhrase)).ToList();
+            DisplayContactsDetails(matchingContacts);
         }
     }
+
+   
 
 }
