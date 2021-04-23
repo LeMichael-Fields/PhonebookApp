@@ -38,4 +38,14 @@ namespace PhonebookApp
             }
         }
     }
+
+    public void DisplayMatchingContacts(string searchPhrase)
+    {
+        var matchingContacts = _contacts.Where(c => c.Name.Contains(searchPhrase)).ToList();
+        foreach (var contact in _contacts)
+        {
+            DisplayContactDetails(contact);
+        }
+    }
+
 }
