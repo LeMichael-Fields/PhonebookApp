@@ -6,7 +6,7 @@ namespace PhonebookApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello! Welcome to the Console Phonebook App!");
         }
     }
 }
